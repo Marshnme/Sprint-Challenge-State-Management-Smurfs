@@ -1,10 +1,11 @@
-import {START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE} from "../actions";
+import {START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE,SHOW_SMURFS} from "../actions";
 
 
 const initialState = {
     smurfs: [],
     isFetching: false,
-    error:''
+    error:'',
+    isPosting: false,
 }
 
 
@@ -30,6 +31,34 @@ export const smurfReducer = (state=initialState, action) => {
                 isFetching:false,
                 error:action.payload
             }
+
+        case SHOW_SMURFS:
+            return{
+                ...state,
+                isFetching:false,
+                error:'',
+                smurfs:state.smurfs
+            }
+        // case POST_SMURF:
+        //         return {
+        //             ...state,
+        //             isPosting:true,
+        //             error:""
+        
+        //         }
+        // case POST_SUCCESS:
+        //         return {
+        //             ...state,
+        //             isPosting: false,
+        //             smurfs: action.payload,
+        //             error:""
+        //         }
+        // case POST_FAILURE:
+        //         return {
+        //             ...state,
+        //             isPosting:false,
+        //             error:action.payload
+        //         }
         default:
             return state
     }

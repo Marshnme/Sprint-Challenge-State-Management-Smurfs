@@ -1,14 +1,20 @@
-import React from "react";
+import React,{useEffect} from "react";
 import axios from "axios";
+import {showSmurfs} from "../actions";
 import { Form, Field, withFormik } from "formik";
-// import {connect} from "react-redux";
-// import {fetchSmurfs} from "../actions";
+import {connect} from "react-redux";
 
 
-    const SmurfForm = ({values, status }) => {
+
+    const SmurfForm = ({showSmurfs}) => {
+
+    
+
         return (
             <>
             <h1>Want to add a smurf?</h1>
+            
+    
             <Form>
                 <Field type="text" name="name" placeholder="Name..."/> 
                 <Field type="text" name="age" placeholder="Age..."/>
@@ -17,7 +23,7 @@ import { Form, Field, withFormik } from "formik";
             </Form>
             </>
         )
-    };
+        }
 
 
     const FormikSmurfForm = withFormik({
@@ -40,6 +46,8 @@ import { Form, Field, withFormik } from "formik";
                 .catch(err => console.log(err.response));
         }
     })(SmurfForm)
+    
 
 
-    export default FormikSmurfForm;
+
+export default FormikSmurfForm

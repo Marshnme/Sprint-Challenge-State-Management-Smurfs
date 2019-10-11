@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import {values} from "../components/SmurfForm";
 
 
 export const START_FETCHING = 'START_FETCHING';
@@ -18,8 +18,29 @@ export const fetchSmurfs = () => dispatch => {
 }
 
 
-// export const addSmurf = () => dispatch =>{
-//     dispatch({START_POST});
+export const SHOW_SMURFS = "SHOW_SMURFS";
+
+export const showSmurfs = () => dispatch => {
+    dispatch({TYPE:SHOW_SMURFS});
+
+}
+
+
+
+
+
+export const POST_SMURF = 'START_FETCHING';
+export const POST_SUCCESS = 'FETCH_SUCCESS';
+export const POST_FAILURE = 'FETCH_FAILURE';
+
+// export const postSmurf = () => dispatch =>{
+//     dispatch({POST_SMURF});
 //         axios
-//             .post("http://localhost:3333/smurfs" ,values)
+//     // values is our object with all our data on it.
+//             .post("http://localhost:3333/smurfs", values)
+//             .then(res => {
+//                 dispatch({type:POST_SUCCESS, payload:values})
+//                 console.log(res);
+//             })
+//             .catch(err => dispatch ({type: POST_FAILURE, payload: err.repsponse}));
 // }

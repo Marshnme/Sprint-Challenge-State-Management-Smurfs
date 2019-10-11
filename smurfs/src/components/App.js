@@ -6,8 +6,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfVillage/>
+        
         <SmurfForm/>
+        <SmurfVillage/>
       </div>
     );
   }

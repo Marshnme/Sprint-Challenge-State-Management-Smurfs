@@ -20,7 +20,7 @@ const SmurfVillage = props => {
         <>
         <div>
             {props.smurfs.map(smurf => (
-                <div>
+                <div key={smurf.id}>
                     <p>{smurf.name}</p>
                     <p>{smurf.age}</p>
                     <p>{smurf.height}</p>
