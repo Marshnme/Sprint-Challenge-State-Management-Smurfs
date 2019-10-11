@@ -18,12 +18,12 @@ const SmurfVillage = props => {
 
     return (
         <>
-        <div>
+        <div className="smurf-holder">
             {props.smurfs.map(smurf => (
-                <div key={smurf.id}>
-                    <p>{smurf.name}</p>
-                    <p>{smurf.age}</p>
-                    <p>{smurf.height}</p>
+                <div className="spec-smurf" key={smurf.id}>
+                    <p>Name: {smurf.name}</p>
+                    <p>Age: {smurf.age}</p>
+                    <p>Height: {smurf.height}</p>
                 </div>
             ))}
         </div>

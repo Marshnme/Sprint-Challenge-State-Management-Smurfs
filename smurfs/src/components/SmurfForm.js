@@ -1,12 +1,12 @@
 import React,{useEffect} from "react";
 import axios from "axios";
-import {showSmurfs} from "../actions";
+
 import { Form, Field, withFormik } from "formik";
 import {connect} from "react-redux";
 
 
 
-    const SmurfForm = ({showSmurfs}) => {
+    const SmurfForm = () => {
 
     
 
@@ -34,13 +34,13 @@ import {connect} from "react-redux";
                 height: height || "",
             };
         },
-        handleSubmit(values, { setStatus }) {
+        handleSubmit(values) {
             console.log("values", values);
             axios
               // values is our object with all our data on it.
                 .post("http://localhost:3333/smurfs", values)
                 .then(res => {
-                setStatus(res.data);
+                
                 console.log(res);
             })
                 .catch(err => console.log(err.response));
