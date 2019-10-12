@@ -1,14 +1,10 @@
 import {START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE,SHOW_SMURFS} from "../actions";
-
-
 const initialState = {
     smurfs: [],
     isFetching: false,
     error:'',
     isPosting: false,
 }
-
-
 export const smurfReducer = (state=initialState, action) => {
     switch(action.type){
         case START_FETCHING:
@@ -16,13 +12,12 @@ export const smurfReducer = (state=initialState, action) => {
                 ...state,
                 isFetching:true,
                 error:""
-
             }
         case FETCH_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
-                smurfs: action.payload,
+                smurfs:  action.payload,
                 error:""
             }
         case FETCH_FAILURE:

@@ -1,21 +1,14 @@
 import React,{useEffect} from "react";
 import axios from "axios";
-
 import { Form, Field, withFormik } from "formik";
 import {connect} from "react-redux";
-
-
+import {fetchSmurfs} from "../actions";
 
     const SmurfForm = () => {
-
-    
-
         return (
             <>
             <h1>Want to add a smurf?</h1>
-            
-    
-            <Form>
+            <Form >
                 <Field type="text" name="name" placeholder="Name..."/> 
                 <Field type="text" name="age" placeholder="Age..."/>
                 <Field type="text" name="height" placeholder="Height..."/>   
@@ -24,8 +17,6 @@ import {connect} from "react-redux";
             </>
         )
         }
-
-
     const FormikSmurfForm = withFormik({
         mapPropsToValues({name, age, height}){
             return{
@@ -46,8 +37,16 @@ import {connect} from "react-redux";
                 .catch(err => console.log(err.response));
         }
     })(SmurfForm)
-    
+// export default FormikSmurfForm
 
 
-
-export default FormikSmurfForm
+const mapStateToProps = state => {
+    return {
+        smurfs: state.smurf.smurfs,
+        isFetching: state.smurf.isFetching,
+        error: state.smurf.error
+    }
+}
+export default connect(mapStateToProps, 
+    {fetchSmurfs}
+)(FormikSmurfForm);
