@@ -45,7 +45,7 @@ export const smurfReducer = (state=initialState, action) => {
         //         return {
         //             ...state,
         //             isPosting: false,
-        //             smurfs: action.payload,
+        //             smurfs: [...state.smurfs, action.payload],
         //             error:""
         //         }
         // case POST_FAILURE:

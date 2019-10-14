@@ -1,10 +1,12 @@
-import React,{useEffect} from "react";
+import React,{useState, useEffect} from "react";
 import axios from "axios";
 import { Form, Field, withFormik } from "formik";
 import {connect} from "react-redux";
 import {fetchSmurfs} from "../actions";
 
-    const SmurfForm = () => {
+    const SmurfForm = ({values, status}) => {
+        const [smurf, setSmurf] = useState({});
+
         return (
             <>
             <h1>Want to add a smurf?</h1>
