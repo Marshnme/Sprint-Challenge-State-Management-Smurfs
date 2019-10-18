@@ -2,53 +2,49 @@ import React,{useState, useEffect} from "react";
 import axios from "axios";
 import { Form, Field, withFormik } from "formik";
 import {connect} from "react-redux";
-import {fetchSmurfs} from "../actions";
+import {postSmurf} from "../actions";
 
-    const SmurfForm = ({values, status}) => {
-        const [smurf, setSmurf] = useState({});
+    const SmurfForm = (props) => {
+    console.log("props",props);
+        const [form, setForm] = useState({name:"", age: "", height:""});
+
+
+    const handleChanges = e =>  {   
+        setForm({...form, [e.target.name]: e.target.value})
+            
+                
+        };
+
+            const onSubmit = e => {
+                e.preventDefault();
+                props.postSmurf(form);
+            }
+
 
         return (
             <>
             <h1>Want to add a smurf?</h1>
-            <Form >
-                <Field type="text" name="name" placeholder="Name..."/> 
-                <Field type="text" name="age" placeholder="Age..."/>
-                <Field type="text" name="height" placeholder="Height..."/>   
+            <form onSubmit={onSubmit}>
+                <input type="text" name="name" onChange={handleChanges} value={form.name} placeholder="Name..."/> 
+                <input type="text" name="age" onChange={handleChanges} value={form.age} placeholder="Age..."/>
+                <input type="text" name="height" onChange={handleChanges} value={form.height} placeholder="Height..."/>   
                 <button type="submit">Submit!</button>
-            </Form>
+            </form>
             </>
         )
         }
-    const FormikSmurfForm = withFormik({
-        mapPropsToValues({name, age, height}){
-            return{
-                name: name || "",
-                age: age || "",
-                height: height || "",
-            };
-        },
-        handleSubmit(values) {
-            console.log("values", values);
-            axios
-              // values is our object with all our data on it.
-                .post("http://localhost:3333/smurfs", values)
-                .then(res => {
-                
-                console.log(res);
-            })
-                .catch(err => console.log(err.response));
-        }
-    })(SmurfForm)
-// export default FormikSmurfForm
+    
 
 
 const mapStateToProps = state => {
     return {
         smurfs: state.smurf.smurfs,
         isFetching: state.smurf.isFetching,
-        error: state.smurf.error
+        error: state.smurf.error,
+        isPosting: state.smurf.isPosting
+
     }
 }
 export default connect(mapStateToProps, 
-    {fetchSmurfs}
-)(FormikSmurfForm);
+    {postSmurf}
+)(SmurfForm);

@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 
 
  const Smurf = (props) => {
+     console.log("smurfs",props.smurfs)
     return(
         <>
     <div className="smurf-holder">
