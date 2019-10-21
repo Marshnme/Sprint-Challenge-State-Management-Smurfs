@@ -22,11 +22,11 @@ export const POST_SMURF = 'START_POSTING';
 export const POST_SUCCESS = 'FETCH_SUCCESS';
 export const POST_FAILURE = 'FETCH_FAILURE';
 
-export const postSmurf = (value) => dispatch =>{
-    console.log("post value",value)
+export const postSmurf = (values) => dispatch =>{
+    console.log("post value",values)
     dispatch({type:POST_SMURF});
         axios
-            .post("http://localhost:3333/smurfs", value)
+            .post("http://localhost:3333/smurfs", values)
             .then(res => {
                 console.log("post res",res)
                 dispatch({type:POST_SUCCESS, payload:res.data})
